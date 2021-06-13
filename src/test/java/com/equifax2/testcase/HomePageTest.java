@@ -1,7 +1,11 @@
 package com.equifax2.testcase;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.hc.core5.reactor.Command.Priority;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +54,7 @@ public class HomePageTest extends BasePage {
 
 		String  expectedPrice="$47.49";
 		String  actualPrice= this.serchPage.priceAssertion();
-		Assert.assertTrue(actualPrice.contains(expectedPrice));
+		AssertJUnit.assertTrue(actualPrice.contains(expectedPrice));
 
 		serchPage.clickFirstElement();
 		serchPage.clickAddtoCart();
@@ -58,7 +62,7 @@ public class HomePageTest extends BasePage {
 
 		expectedPrice="$47.49";
 		actualPrice= this.serchPage.priceAssertion2();
-		Assert.assertTrue(actualPrice.contains(expectedPrice));		
+		AssertJUnit.assertTrue(actualPrice.contains(expectedPrice));		
 		serchPage.clickCheckOut();				
 
 		
@@ -69,6 +73,7 @@ public class HomePageTest extends BasePage {
 
 	}
 
+	
 	@AfterMethod
 	public void tearDown() {
 		if (driver != null) {
